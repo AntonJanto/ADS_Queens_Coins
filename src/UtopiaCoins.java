@@ -9,7 +9,6 @@ public class UtopiaCoins
   public int[] getCounts(int[] coinValues, int number)
   {
     int[] result = getCountsRecursive(coinValues, number, new int[coinValues.length + 1], 0);
-    if(number == 0) System.out.println("fuck");
     return save(number,result, 0);
   }
 
@@ -32,10 +31,10 @@ public class UtopiaCoins
         return save(number, withSmaller, pointer);
       return save(number, withBigger, pointer);
     }
-    //case: normal case, where each bigger coin has at least double the value of the previous one
+    //case: the last one
     result[pointer] += number/coinValues[pointer];
     result[coinValues.length]+=result[pointer];
-    if (pointer+1 == coinValues.length | number == 0)
+    if (number == 0 || pointer+1 == coinValues.length )
       return result;
     return save(number, getCountsRecursive(coinValues, number%coinValues[pointer], result, pointer+1), pointer);
   }
@@ -61,6 +60,7 @@ public class UtopiaCoins
     return result;
   }
 
+
   //helper functions
   public void printCalculated(){
     for( Map.Entry<Integer, int[]> entry : map.entrySet() ){
@@ -70,5 +70,10 @@ public class UtopiaCoins
 
   public static void printArray(int[] array){
     System.out.println(Arrays.toString(array));
+  }
+
+  public int getFunctionCalls()
+  {
+    return functionCalls;
   }
 }
