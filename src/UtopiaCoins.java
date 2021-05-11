@@ -22,7 +22,7 @@ public class UtopiaCoins
       return get(number,result,pointer);
 
     //case: where it could be possible to get smaller total coin count with smaller coins
-    if (pointer+1 < coinValues.length && coinValues[pointer]<coinValues[pointer+1]*2)
+    if (pointer+1 < coinValues.length)
     {
       int[] withSmaller = getCountsRecursive(coinValues, number, result.clone(), pointer + 1);
       result[pointer] += number / coinValues[pointer];

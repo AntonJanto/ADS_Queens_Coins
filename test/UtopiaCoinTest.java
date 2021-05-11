@@ -58,6 +58,16 @@ public class UtopiaCoinTest
           assertTrue(compareTwoArrays(expected,result));
      }
 
+     @Test
+     public void testValues4(){
+          int number = 27;
+          int[] coinValues = new int[] {100, 20, 9, 1};
+          int[] expected = new int[] {0, 0, 3, 0};
+          int[] result = utopiaCoins.getCounts(coinValues, number);
+
+          assertTrue(compareTwoArrays(expected,result));
+     }
+
      private boolean compareTwoArrays(int[] arrA, int[] arrB){
           //second can be bigger, will evaluate the first values
           for (int i = 0; i < arrA.length; i++) if (arrA[i] != arrB[i]) return false;
