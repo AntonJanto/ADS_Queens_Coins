@@ -32,14 +32,6 @@ public class UtopiaCoinTest
      }
 
      @Test
-     public void Impossible(){
-          int number = 15;
-          int[] coinValues = new int[] {8, 4, 2};
-          int[] result = utopiaCoins.getCounts(coinValues, number);
-          System.out.println(Arrays.toString(result));
-     }
-
-     @Test
      public void testValues1(){
           int number = 30;
           int[] coinValues = new int[] {22, 10, 7, 1};
