@@ -11,6 +11,10 @@ public class UtopiaCoins
     int[] result = utopiaCoins.getCounts(coinValues, 42);
     printArray(result);
     printCalculated(utopiaCoins.map);
+    System.out.println("second");
+    result = utopiaCoins.getCounts(coinValues, 643922374);
+    printArray(result);
+    printCalculated(utopiaCoins.map);
   }
 
   private int[] save(int key, int[] result, int pointer){
@@ -27,8 +31,14 @@ public class UtopiaCoins
   }
 
   private int[] get(int key, int[] result, int pointer){
-    int array[] = new int[result.length];
-
+    int[] saved = map.get(key);
+    System.out.println("send : " + Arrays.toString(result));
+    System.out.println("found: " + Arrays.toString(saved));
+    for (int i = pointer; i < result.length; i++)
+    {
+      result[i]+=saved[i];
+    }
+    System.out.println("resul: " + Arrays.toString(result));
     return result;
   }
 
@@ -51,9 +61,8 @@ public class UtopiaCoins
 
   private int[] getCountsRecursive(int[] coinValues, int number, int[] result, int pointer){
     //check if we haven't already calculated this value:
-    int[] previouslyCalculated = get(number, result, pointer);
-    if(previouslyCalculated!=null )
-      return previouslyCalculated;
+    if(map.get(number)!=null )
+      return get(number,result,pointer);
 
     //case: where it could be possible to get smaller total coin count with smaller coins
     if (pointer+1 < coinValues.length && coinValues[pointer]<coinValues[pointer+1]*2)
